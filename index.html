@@ -43,7 +43,6 @@
 
 <select id="override">
   <option value="">Auto Status</option>
-  <option>Present</option>
   <option>Absent</option>
   <option>On Leave</option>
 </select>
@@ -179,7 +178,7 @@ function addEntry(){
 
   if(status === "Rest Day") row.classList.add("rest");
   else if(status === "Absent") row.classList.add("absent");
-  else row.classList.add("present");
+  else row.classList.add("Present");
 
   saveLocal();
 
@@ -217,7 +216,7 @@ window.onload = ()=>{
     let status = d[2];
     if(status === "Rest Day") row.classList.add("rest");
     else if(status === "Absent") row.classList.add("absent");
-    else row.classList.add("present");
+    else row.classList.add("Present");
   });
 };
 
