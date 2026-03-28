@@ -20,9 +20,9 @@
 
     .rest { background-color: #fff3cd; }
     .absent { background-color: #f8d7da; }
-    .working { background-color: #d4edda; }
+    .present { background-color: #28a745; color: white; } /* GREEN */
 
-    .delete-btn {
+    .clear-btn {
       background: #dc3545;
       color: white;
       border: none;
@@ -43,7 +43,6 @@
 
 <select id="override">
   <option value="">Auto Status</option>
-  <option>Present</option>
   <option>Absent</option>
   <option>On Leave</option>
 </select>
@@ -153,7 +152,7 @@ function addEntry(){
   let status = override.value || (
     selectedStore && getDayName(date.value) === selectedStore.rest
       ? "Rest Day"
-      : "Working"
+      : "Present"
   );
 
   [
@@ -177,13 +176,13 @@ function addEntry(){
   };
   actionCell.appendChild(btn);
 
+  // COLOR LOGIC
   if(status === "Rest Day") row.classList.add("rest");
   else if(status === "Absent") row.classList.add("absent");
-  else row.classList.add("Working");
+  else if(status === "Present") row.classList.add("present");
 
   saveLocal();
 
-  // AUTO RESET
   resetForm();
 }
 
@@ -217,7 +216,7 @@ window.onload = ()=>{
     let status = d[2];
     if(status === "Rest Day") row.classList.add("rest");
     else if(status === "Absent") row.classList.add("absent");
-    else row.classList.add("Working");
+    else if(status === "Present") row.classList.add("present");
   });
 };
 
@@ -239,6 +238,3 @@ if("serviceWorker" in navigator){
 
 </body>
 </html>
-
-
-
